@@ -19,12 +19,12 @@ const recuperarXid = (req,res,next) => {
 }
 
 const crearMarca = (req,res,next) => {
-    var id = knex('marcas').withSchema('michelada_test').max('id_marca')
+    knex('marcas').withSchema('michelada_test').max('id_marca')
     .then(id => {
         knex('marcas').withSchema('michelada_test')
         .returning(['id_marca','nombre'])
         .insert({
-            id_marca:Number(id[0].max)+1,
+            id_marca:Number(id[0].max) + 1,
             nombre:req.body.nombre
         })
         .then(data => res.send(data))
@@ -58,5 +58,5 @@ module.exports = {
     recuperarXid:recuperarXid,
     crearMarca:crearMarca,
     actualizarMarca:actualizarMarca,
-    eliminarMarca:eliminarMarca,
+    eliminarMarca:eliminarMarca
 }
