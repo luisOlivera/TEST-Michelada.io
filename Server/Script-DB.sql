@@ -1,5 +1,5 @@
-﻿create schema michelada_TEST authorization postgres;
-set search_path to michelada_TEST;
+﻿create schema michelada_test authorization postgres;
+set search_path to michelada_test;
 
 create table marcas(
     id_marca bigint primary key,
